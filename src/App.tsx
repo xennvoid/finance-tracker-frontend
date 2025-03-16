@@ -1,7 +1,9 @@
 import { CssBaseline } from '@mui/material';
 import Home from '@pages/Home';
+import LoginPage from '@pages/Login';
 import AuthLayout from 'layouts/AuthLayout';
 import { Route, Routes } from 'react-router';
+import { ROUTES } from 'routes';
 
 function App() {
   return (
@@ -9,7 +11,9 @@ function App() {
       <CssBaseline />
       <Routes>
         <Route index element={<Home />} />
-        <Route element={<AuthLayout />}></Route>
+        <Route element={<AuthLayout />}>
+          <Route path={ROUTES.LOGIN} element={<LoginPage />}></Route>
+        </Route>
       </Routes>
     </>
   );
