@@ -15,8 +15,14 @@ const LoginForm: FC<LoginFormProps> = ({}) => {
         Login to your account
       </Typography>
       <Stack spacing={3}>
-        <AuthInput inputTitle="Email" type="email" placeholder="Enter your email" />
-        <AuthInput inputTitle="Password" type="password" placeholder="Enter your password" />
+        <AuthInput name="email" inputTitle="Email" type="email" placeholder="Enter your email" />
+        <AuthInput
+          name="password"
+          inputTitle="Password"
+          type="password"
+          placeholder="Enter your password"
+          autoComplete="off"
+        />
       </Stack>
       <AuthFormButton>Log in</AuthFormButton>
       <AuthFormFooter
