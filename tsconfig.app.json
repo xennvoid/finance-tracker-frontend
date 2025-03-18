@@ -29,7 +29,8 @@
       "@pages/*": ["pages/*"],
       "@features/*": ["features/*"],
       "@api/*": ["api/*"],
-      "@services/*": ["services/*"]
+      "@services/*": ["services/*"],
+      "@constants/*": ["constants/*"]
     }
   },
   "include": ["src"]
