@@ -27,7 +27,10 @@
     "paths": {
       "@components/*": ["components/*"],
       "@pages/*": ["pages/*"],
-      "@features/*": ["features/*"]
+      "@features/*": ["features/*"],
+      "@api/*": ["api/*"],
+      "@services/*": ["services/*"],
+      "@constants/*": ["constants/*"]
     }
   },
   "include": ["src"]
