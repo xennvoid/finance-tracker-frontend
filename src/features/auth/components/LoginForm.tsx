@@ -5,17 +5,27 @@ import AuthFormButton from './AuthFormButton';
 import AuthFormFooter from './AuthFormFooter';
 import AuthFormWrapper from './AuthFormWrapper';
 import { ROUTES } from 'routes';
+import { useLoginActionStateWithMutation } from '../hooks/useLoginMutation';
+import FormError from './FormError';
 
 interface LoginFormProps {}
 
 const LoginForm: FC<LoginFormProps> = ({}) => {
+  const { error, isError, isPending, action, actionState } = useLoginActionStateWithMutation();
+
   return (
-    <AuthFormWrapper>
+    <AuthFormWrapper action={action}>
       <Typography variant="h5" fontWeight={700} textAlign="center">
         Login to your account
       </Typography>
       <Stack spacing={3}>
-        <AuthInput name="email" inputTitle="Email" type="email" placeholder="Enter your email" />
+        <AuthInput
+          name="email"
+          inputTitle="Email"
+          type="email"
+          placeholder="Enter your email"
+          defaultValue={actionState.email}
+        />
         <AuthInput
           name="password"
           inputTitle="Password"
@@ -24,7 +34,10 @@ const LoginForm: FC<LoginFormProps> = ({}) => {
           autoComplete="off"
         />
       </Stack>
-      <AuthFormButton>Log in</AuthFormButton>
+      <FormError isError={isError} message={error?.error?.message || ''} />
+      <AuthFormButton loading={isPending} disabled={isPending}>
+        Log in
+      </AuthFormButton>
       <AuthFormFooter
         textBelow="Don't have an account ?"
         linkText="Register"
