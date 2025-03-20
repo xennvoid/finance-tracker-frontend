@@ -13,7 +13,7 @@ const LoginForm: FC<LoginFormProps> = ({}) => {
   const { error, isError, isPending, action, actionState } = useLoginActionStateWithMutation();
 
   return (
-    <AuthFormWrapper>
+    <AuthFormWrapper action={action}>
       <Typography variant="h5" fontWeight={700} textAlign="center">
         Login to your account
       </Typography>
