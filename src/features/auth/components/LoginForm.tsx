@@ -6,6 +6,7 @@ import AuthFormFooter from './AuthFormFooter';
 import AuthFormWrapper from './AuthFormWrapper';
 import { ROUTES } from 'routes';
 import { useLoginActionStateWithMutation } from '../hooks/useLoginMutation';
+import FormError from './FormError';
 
 interface LoginFormProps {}
 
@@ -33,6 +34,7 @@ const LoginForm: FC<LoginFormProps> = ({}) => {
           autoComplete="off"
         />
       </Stack>
+      <FormError isError={isError} message={error?.error?.message || ''} />
       <AuthFormButton loading={isPending} disabled={isPending}>
         Log in
       </AuthFormButton>
