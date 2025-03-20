@@ -33,7 +33,9 @@ const LoginForm: FC<LoginFormProps> = ({}) => {
           autoComplete="off"
         />
       </Stack>
-      <AuthFormButton>Log in</AuthFormButton>
+      <AuthFormButton loading={isPending} disabled={isPending}>
+        Log in
+      </AuthFormButton>
       <AuthFormFooter
         textBelow="Don't have an account ?"
         linkText="Register"
