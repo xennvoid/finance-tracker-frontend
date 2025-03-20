@@ -18,7 +18,13 @@ const LoginForm: FC<LoginFormProps> = ({}) => {
         Login to your account
       </Typography>
       <Stack spacing={3}>
-        <AuthInput name="email" inputTitle="Email" type="email" placeholder="Enter your email" />
+        <AuthInput
+          name="email"
+          inputTitle="Email"
+          type="email"
+          placeholder="Enter your email"
+          defaultValue={actionState.email}
+        />
         <AuthInput
           name="password"
           inputTitle="Password"
