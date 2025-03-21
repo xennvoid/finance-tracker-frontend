@@ -1,7 +1,7 @@
 import { axiosInstance } from '@api/axiosInstance';
 import { ILoginFormData, ILoginResponse } from '@features/types/login.types';
 import { setAccessToken } from '@services/tokenServices';
-import { AUTH_ENDPOINTS } from '@constants/apiEndpoints/auth';
+import { AUTH_ENDPOINTS } from '@constants/api-endpoints/auth';
 
 export const login = async ({ email, password }: ILoginFormData): Promise<void> => {
   const responseData = await axiosInstance.post<void, ILoginResponse>(AUTH_ENDPOINTS.LOGIN, {
