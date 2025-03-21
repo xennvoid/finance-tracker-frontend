@@ -31,7 +31,8 @@
       "@api/*": ["api/*"],
       "@services/*": ["services/*"],
       "@constants/*": ["constants/*"],
-      "@routes/*": ["routes/*"]
+      "@routes/*": ["routes/*"],
+      "@layouts/*": ["layouts/*"]
     }
   },
   "include": ["src"]
