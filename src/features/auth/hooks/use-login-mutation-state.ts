@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 import { IApiResponseError } from 'types/apiResponse';
-import { login } from '../services/login';
+import { login } from '../services/login.service';
 import { useActionState } from 'react';
 import { ILoginFormData } from '@features/types/login.types';
 
