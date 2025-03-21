@@ -4,7 +4,7 @@ import { login } from '../services/login';
 import { useActionState } from 'react';
 import { ILoginFormData } from '@features/types/login.types';
 
-export const useLoginActionStateWithMutation = () => {
+export const useLoginMutationState = () => {
   const mutation = useMutation({
     mutationFn: login,
     onError: (err: IApiResponseError) => err,

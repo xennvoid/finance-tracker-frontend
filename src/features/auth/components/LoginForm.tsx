@@ -5,13 +5,13 @@ import AuthFormButton from './AuthFormButton';
 import AuthFormFooter from './AuthFormFooter';
 import AuthFormWrapper from './AuthFormWrapper';
 import { ROUTES } from '@routes/routes';
-import { useLoginActionStateWithMutation } from '../hooks/useLoginMutation';
+import { useLoginMutationState } from '../hooks/use-login-mutation-state';
 import FormError from './FormError';
 
 interface LoginFormProps {}
 
 const LoginForm: FC<LoginFormProps> = ({}) => {
-  const { error, isError, isPending, action, actionState } = useLoginActionStateWithMutation();
+  const { error, isError, isPending, action, actionState } = useLoginMutationState();
 
   return (
     <AuthFormWrapper action={action}>
