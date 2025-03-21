@@ -1,4 +1,4 @@
-import { IApiResponse } from 'types/apiResponse';
+import { IApiResponse } from 'types/api-response.types';
 
 export interface ILoginResponseData {
   accessToken: string;

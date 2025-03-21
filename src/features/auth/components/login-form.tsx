@@ -1,17 +1,17 @@
 import { FC } from 'react';
 import { Stack, Typography } from '@mui/material';
-import AuthInput from './AuthInput';
-import AuthFormButton from './AuthFormButton';
-import AuthFormFooter from './AuthFormFooter';
-import AuthFormWrapper from './AuthFormWrapper';
-import { ROUTES } from 'routes';
-import { useLoginActionStateWithMutation } from '../hooks/useLoginMutation';
-import FormError from './FormError';
+import AuthInput from './auth-input';
+import AuthFormButton from './auth-form-button';
+import AuthFormFooter from './auth-form-footer';
+import AuthFormWrapper from './auth-form-wrapper';
+import { ROUTES } from '@routes/routes';
+import { useLoginMutationState } from '../hooks/use-login-mutation-state';
+import FormError from './form-error';
 
 interface LoginFormProps {}
 
 const LoginForm: FC<LoginFormProps> = ({}) => {
-  const { error, isError, isPending, action, actionState } = useLoginActionStateWithMutation();
+  const { error, isError, isPending, action, actionState } = useLoginMutationState();
 
   return (
     <AuthFormWrapper action={action}>

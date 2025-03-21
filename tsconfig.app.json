@@ -30,7 +30,9 @@
       "@features/*": ["features/*"],
       "@api/*": ["api/*"],
       "@services/*": ["services/*"],
-      "@constants/*": ["constants/*"]
+      "@constants/*": ["constants/*"],
+      "@routes/*": ["routes/*"],
+      "@layouts/*": ["layouts/*"]
     }
   },
   "include": ["src"]

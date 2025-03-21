@@ -1,6 +1,6 @@
-import { clearAccessToken, getAccessToken, setAccessToken } from '@services/tokenServices';
+import { clearAccessToken, getAccessToken, setAccessToken } from '@services/token.service';
 import axios, { InternalAxiosRequestConfig } from 'axios';
-import { AUTH_ENDPOINTS } from 'constants/apiEndpoints/auth';
+import { AUTH_ENDPOINTS } from '@constants/api-endpoints/auth';
 
 const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
