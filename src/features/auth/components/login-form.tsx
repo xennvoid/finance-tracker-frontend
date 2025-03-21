@@ -1,12 +1,12 @@
 import { FC } from 'react';
 import { Stack, Typography } from '@mui/material';
-import AuthInput from './AuthInput';
-import AuthFormButton from './AuthFormButton';
-import AuthFormFooter from './AuthFormFooter';
-import AuthFormWrapper from './AuthFormWrapper';
+import AuthInput from './auth-input';
+import AuthFormButton from './auth-form-button';
+import AuthFormFooter from './auth-form-footer';
+import AuthFormWrapper from './auth-form-wrapper';
 import { ROUTES } from '@routes/routes';
 import { useLoginMutationState } from '../hooks/use-login-mutation-state';
-import FormError from './FormError';
+import FormError from './form-error';
 
 interface LoginFormProps {}
 

@@ -1,5 +1,5 @@
 import { Box, Paper } from '@mui/material';
-import LoginForm from '@features/auth/components/LoginForm';
+import LoginForm from '@features/auth/components/login-form';
 import { FC } from 'react';
 
 interface LoginPageProps {}
