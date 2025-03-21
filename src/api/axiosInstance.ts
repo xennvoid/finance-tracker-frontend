@@ -1,4 +1,4 @@
-import { clearAccessToken, getAccessToken, setAccessToken } from '@services/tokenServices';
+import { clearAccessToken, getAccessToken, setAccessToken } from '@services/token.service';
 import axios, { InternalAxiosRequestConfig } from 'axios';
 import { AUTH_ENDPOINTS } from '@constants/api-endpoints/auth';
 
