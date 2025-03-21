@@ -2,7 +2,7 @@ import { useMutation } from '@tanstack/react-query';
 import { IApiResponseError } from 'types/api-response.types';
 import { login } from '../services/login.service';
 import { useActionState } from 'react';
-import { ILoginFormData } from '@features/types/login.types';
+import { ILoginFormData } from '../types/login.types';
 
 export const useLoginMutationState = () => {
   const mutation = useMutation({
