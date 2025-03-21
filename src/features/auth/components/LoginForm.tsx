@@ -4,7 +4,7 @@ import AuthInput from './AuthInput';
 import AuthFormButton from './AuthFormButton';
 import AuthFormFooter from './AuthFormFooter';
 import AuthFormWrapper from './AuthFormWrapper';
-import { ROUTES } from 'routes';
+import { ROUTES } from '@routes/routes';
 import { useLoginActionStateWithMutation } from '../hooks/useLoginMutation';
 import FormError from './FormError';
 
