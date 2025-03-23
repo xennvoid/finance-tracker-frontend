@@ -2,6 +2,9 @@ import { IApiResponse } from 'types/api-response.types';
 
 export interface ILoginResponseData {
   accessToken: string;
+  email: string;
+  firstName: string;
+  lastName: string;
 }
 
 export type ILoginResponse = IApiResponse<ILoginResponseData>;
