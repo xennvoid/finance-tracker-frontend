@@ -3,11 +3,18 @@ import { IApiResponseError } from 'types/api-response.types';
 import { login } from '../services/login.service';
 import { useActionState } from 'react';
 import { ILoginFormData } from '../types/login.types';
+import { useCurrentUserContext } from '@contexts/current-user-context';
 
 export const useLoginMutationState = () => {
+  const { loginCurrentUser } = useCurrentUserContext();
+
   const mutation = useMutation({
     mutationFn: login,
     onError: (err: IApiResponseError) => err,
+    onSuccess: (userData) => {
+      const { email, firstName, lastName } = userData;
+      loginCurrentUser({ email, firstName, lastName });
+    },
   });
 
   const loginAction = async (
