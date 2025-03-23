@@ -32,7 +32,8 @@
       "@services/*": ["services/*"],
       "@constants/*": ["constants/*"],
       "@routes/*": ["routes/*"],
-      "@layouts/*": ["layouts/*"]
+      "@layouts/*": ["layouts/*"],
+      "@contexts/*": ["contexts/*"]
     }
   },
   "include": ["src"]
