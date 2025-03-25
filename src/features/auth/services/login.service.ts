@@ -4,6 +4,10 @@ import { setAccessToken } from '@services/token.service';
 import { AUTH_ENDPOINTS } from '@constants/api-endpoints/auth';
 
 export const login = async ({ email, password }: ILoginFormData): Promise<ILoginResponseData> => {
+  if (!email || !password) {
+    throw new Error('Provide all fields.');
+  }
+
   const responseData = await axiosInstance.post<void, ILoginResponse>(AUTH_ENDPOINTS.LOGIN, {
     email,
     password,
