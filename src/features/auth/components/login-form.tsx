@@ -34,7 +34,7 @@ const LoginForm: FC<LoginFormProps> = ({}) => {
           autoComplete="off"
         />
       </Stack>
-      <FormError isError={isError} message={error?.error?.message || ''} />
+      <FormError isError={isError} message={error?.message || ''} />
       <AuthFormButton loading={isPending} disabled={isPending}>
         Log in
       </AuthFormButton>
