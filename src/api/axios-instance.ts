@@ -1,6 +1,7 @@
 import { clearAccessToken, getAccessToken, setAccessToken } from '@services/token.service';
-import axios, { InternalAxiosRequestConfig } from 'axios';
+import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
 import { AUTH_ENDPOINTS } from '@constants/api-endpoints/auth';
+import { IApiResponseError } from 'types/api-response.types';
 
 const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -30,15 +31,14 @@ axiosInstance.interceptors.response.use(
   (response) => {
     return response.data;
   },
-  async (error) => {
+  async (error: AxiosError<IApiResponseError>) => {
+    const originalRequest = error.config as CustomAxiosRequestConfig;
     if (
       error.response?.status === 401 &&
       error.response.data.error.errorCode === 'invalid_token' &&
-      !error.config._retry
+      !originalRequest._retry
     ) {
       try {
-        const originalRequest = error.config as CustomAxiosRequestConfig;
-
         originalRequest._retry = true;
 
         const response = await axios.get(BASE_URL + AUTH_ENDPOINTS.REFRESH_TOKEN, {
@@ -51,11 +51,10 @@ axiosInstance.interceptors.response.use(
           return axiosInstance(originalRequest);
         }
       } catch (error) {
-        console.error(error);
         clearAccessToken();
       }
     }
 
-    return Promise.reject(error.response.data);
+    return Promise.reject(error.response?.data.error);
   },
 );
