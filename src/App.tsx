@@ -4,11 +4,13 @@ import LoginPage from '@pages/Login';
 import AuthLayout from '@layouts/auth-layout';
 import { Route, Routes } from 'react-router';
 import { ROUTES } from '@routes/routes';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
     <>
       <CssBaseline />
+      <ToastContainer />
       <Routes>
         <Route index element={<Home />} />
         <Route element={<AuthLayout />}>
