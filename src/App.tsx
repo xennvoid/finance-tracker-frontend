@@ -5,6 +5,7 @@ import AuthLayout from '@layouts/auth-layout';
 import { Route, Routes } from 'react-router';
 import { ROUTES } from '@routes/routes';
 import { ToastContainer } from 'react-toastify';
+import RegisterPage from '@pages/Register';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route index element={<Home />} />
         <Route element={<AuthLayout />}>
           <Route path={ROUTES.LOGIN} element={<LoginPage />}></Route>
+          <Route path={ROUTES.REGISTER} element={<RegisterPage />}></Route>
         </Route>
       </Routes>
     </>
