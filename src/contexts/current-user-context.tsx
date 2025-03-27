@@ -3,7 +3,7 @@ import {
   removeCurrentUser,
   saveCurrentUser,
 } from '@features/auth/services/user-storage.service';
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState } from 'react';
 import {
   ICurrentUserContextType,
   ICurrentUserData,
@@ -13,7 +13,7 @@ import {
 const CurrentUserContext = createContext<ICurrentUserContextType | null>(null);
 
 export const CurrentUserProvider = ({ children }: ICurrentUserProviderProps) => {
-  const [currentUser, setCurrentUser] = useState<ICurrentUserData>(null);
+  const [currentUser, setCurrentUser] = useState<ICurrentUserData>(() => getStoredUser());
 
   const loginCurrentUser = (userData: ICurrentUserData) => {
     setCurrentUser(userData);
@@ -24,10 +24,6 @@ export const CurrentUserProvider = ({ children }: ICurrentUserProviderProps) => 
     setCurrentUser(null);
     removeCurrentUser();
   };
-
-  useEffect(() => {
-    setCurrentUser(getStoredUser());
-  }, []);
 
   return (
     <CurrentUserContext.Provider value={{ currentUser, loginCurrentUser, logOutCurrentUser }}>
