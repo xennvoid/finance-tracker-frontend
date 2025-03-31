@@ -33,7 +33,8 @@
       "@constants/*": ["constants/*"],
       "@routes/*": ["routes/*"],
       "@layouts/*": ["layouts/*"],
-      "@contexts/*": ["contexts/*"]
+      "@contexts/*": ["contexts/*"],
+      "@hooks/*": ["hooks/*"]
     }
   },
   "include": ["src"]
