@@ -8,6 +8,7 @@ import { ToastContainer } from 'react-toastify';
 import RegisterPage from '@pages/Register';
 import { useCurrentUserContext } from '@contexts/current-user-context';
 import PrivateRoute from '@routes/private-route';
+import AppLayout from '@layouts/app/app-layout';
 
 function App() {
   const { currentUser } = useCurrentUserContext();
@@ -17,7 +18,12 @@ function App() {
       <CssBaseline />
       <ToastContainer />
       <Routes>
-        <Route element={<PrivateRoute isAllowed={!!currentUser} />}>
+        <Route
+          element={
+            <PrivateRoute isAllowed={!!currentUser}>
+              <AppLayout />
+            </PrivateRoute>
+          }>
           <Route index element={<Home />} />
         </Route>
         <Route element={<AuthLayout />}>
