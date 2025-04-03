@@ -1,4 +1,4 @@
-import SpriteSvg from '@components/SpriteSvg';
+import SpriteSvg from '@components/sprite-svg';
 import { ListItem, ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material';
 import { FC } from 'react';
 import { NavLink } from 'react-router';

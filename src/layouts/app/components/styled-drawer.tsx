@@ -2,7 +2,7 @@ import { Drawer } from '@mui/material';
 import { FC } from 'react';
 import DrawerHeader from './drawer-header';
 import DrawerList from './drawer-list';
-import SpriteSvg from '@components/SpriteSvg';
+import SpriteSvg from '@components/sprite-svg';
 import HighlightedIcon from './highlighted-icon';
 
 interface StyledDrawerProps {

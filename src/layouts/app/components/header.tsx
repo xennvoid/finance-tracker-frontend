@@ -1,6 +1,6 @@
 import { Toolbar, Typography, Box } from '@mui/material';
 import { FC } from 'react';
-import SpriteSvg from '@components/SpriteSvg';
+import SpriteSvg from '@components/sprite-svg';
 import HighlightedIcon from './highlighted-icon';
 import { StyledAppBar } from './styled-app-bar';
 import { useLocation } from 'react-router';
