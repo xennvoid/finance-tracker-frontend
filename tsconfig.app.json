@@ -34,7 +34,8 @@
       "@routes/*": ["routes/*"],
       "@layouts/*": ["layouts/*"],
       "@contexts/*": ["contexts/*"],
-      "@hooks/*": ["hooks/*"]
+      "@hooks/*": ["hooks/*"],
+      "@theme/*": ["theme/*"]
     }
   },
   "include": ["src"]
