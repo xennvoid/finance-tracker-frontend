@@ -34,8 +34,7 @@ axiosInstance.interceptors.response.use(
   async (error: AxiosError<IApiResponseError>) => {
     const originalRequest = error.config as CustomAxiosRequestConfig;
     if (
-      error.response?.status === 401 &&
-      error.response.data.error.errorCode === 'invalid_token' &&
+      (error.response?.status === 401 || error.response?.status === 403) &&
       !originalRequest._retry
     ) {
       try {
@@ -47,7 +46,8 @@ axiosInstance.interceptors.response.use(
 
         if (response.status === 200) {
           originalRequest.headers.Authorization = `Bearer ${response.data.accessToken}`;
-          setAccessToken(response.data.accessToken);
+          const accessToken = response.data.data.accessToken;
+          setAccessToken(accessToken);
           return axiosInstance(originalRequest);
         }
       } catch (error) {
