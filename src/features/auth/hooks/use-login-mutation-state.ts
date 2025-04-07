@@ -3,15 +3,19 @@ import { login } from '../services/login.service';
 import { useActionState } from 'react';
 import { ILoginFormData } from '../types/login.types';
 import { useCurrentUserContext } from '@contexts/current-user-context';
+import { useNavigate } from 'react-router';
+import { ROUTES } from '@routes/routes';
 
 export const useLoginMutationState = () => {
   const { loginCurrentUser } = useCurrentUserContext();
+  const navigate = useNavigate();
 
-  const mutation = useMutation({
+  const { error, isError, isPending, mutate } = useMutation({
     mutationFn: login,
     onSuccess: (userData) => {
       const { email, firstName, lastName } = userData;
       loginCurrentUser({ email, firstName, lastName });
+      navigate(ROUTES.HOME);
     },
   });
 
@@ -22,12 +26,12 @@ export const useLoginMutationState = () => {
     const email = formData.get('email')?.toString() || '';
     const password = formData.get('password')?.toString() || '';
 
-    mutation.mutate({ email, password });
+    mutate({ email, password });
 
     return { email, password };
   };
 
   const [actionState, action] = useActionState(loginAction, { email: '', password: '' });
 
-  return { ...mutation, action, actionState };
+  return { error, isError, isPending, action, actionState };
 };
