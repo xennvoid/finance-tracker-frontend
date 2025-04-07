@@ -4,7 +4,7 @@ import { Outlet } from 'react-router';
 import Header from './components/header';
 import StyledDrawer from './components/styled-drawer';
 import Main from './components/main';
-import { useToggle } from '@hooks/useToogle';
+import { useToggle } from '@hooks/use-toggle';
 
 interface AppLayoutProps {}
 
