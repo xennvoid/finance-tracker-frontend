@@ -9,6 +9,7 @@ import RegisterPage from '@pages/Register';
 import { useCurrentUserContext } from '@contexts/current-user-context';
 import PrivateRoute from '@routes/private-route';
 import AppLayout from '@layouts/app/app-layout';
+import Logout from '@pages/Logout';
 
 function App() {
   const { currentUser } = useCurrentUserContext();
@@ -30,6 +31,7 @@ function App() {
           <Route path={ROUTES.LOGIN} element={<LoginPage />}></Route>
           <Route path={ROUTES.REGISTER} element={<RegisterPage />}></Route>
         </Route>
+        <Route path={ROUTES.LOGOUT} element={<Logout />} />
       </Routes>
     </>
   );
