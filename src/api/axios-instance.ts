@@ -52,6 +52,7 @@ axiosInstance.interceptors.response.use(
         }
       } catch (error) {
         clearAccessToken();
+        window.location.href = '/logout';
       }
     }
 
