@@ -7,7 +7,7 @@ import { useCurrentUserContext } from '@contexts/current-user-context';
 export const useLoginMutationState = () => {
   const { loginCurrentUser } = useCurrentUserContext();
 
-  const mutation = useMutation({
+  const { error, isError, isPending, mutate } = useMutation({
     mutationFn: login,
     onSuccess: (userData) => {
       const { email, firstName, lastName } = userData;
@@ -22,12 +22,12 @@ export const useLoginMutationState = () => {
     const email = formData.get('email')?.toString() || '';
     const password = formData.get('password')?.toString() || '';
 
-    mutation.mutate({ email, password });
+    mutate({ email, password });
 
     return { email, password };
   };
 
   const [actionState, action] = useActionState(loginAction, { email: '', password: '' });
 
-  return { ...mutation, action, actionState };
+  return { error, isError, isPending, action, actionState };
 };
