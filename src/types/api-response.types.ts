@@ -3,6 +3,17 @@ export interface IApiResponse<T> {
   data: T;
 }
 
+export interface IApiPaginatedResponse<T> {
+  message: string;
+  data: T;
+  pagination: {
+    total: number;
+    page: number;
+    pageSize: number;
+    totalPages: number;
+  };
+}
+
 export interface IApiResponseError {
   error: {
     errorCode: string;
