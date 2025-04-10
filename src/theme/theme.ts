@@ -1,7 +1,9 @@
-import { createTheme } from '@mui/material';
+import { createTheme, responsiveFontSizes } from '@mui/material';
 
-export const theme = createTheme({
-  palette: {
-    custom: { titlePrimary: '#343c6a', titleSecondary: '#718ebf', textPrimary: '#232323' },
-  },
-});
+export const theme = responsiveFontSizes(
+  createTheme({
+    palette: {
+      custom: { titlePrimary: '#343c6a', titleSecondary: '#718ebf', textPrimary: '#232323' },
+    },
+  }),
+);
