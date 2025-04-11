@@ -1,10 +1,11 @@
-import { Toolbar, Typography, Box } from '@mui/material';
+import { Toolbar, Box } from '@mui/material';
 import { FC } from 'react';
 import SpriteSvg from '@components/sprite-svg';
 import HighlightedIcon from './highlighted-icon';
 import { StyledAppBar } from './styled-app-bar';
 import { useLocation } from 'react-router';
 import { pathTitles } from '../data/path-titles';
+import TitleTypography from '@components/title-typography';
 
 interface HeaderProps {
   open: boolean;
@@ -38,7 +39,7 @@ const Header: FC<HeaderProps> = ({ open, drawerWidth, onClick }) => {
               />
             </HighlightedIcon>
           )}
-          <Typography variant="h5">{title}</Typography>
+          <TitleTypography variant="h4">{title}</TitleTypography>
         </Box>
         <Box display="flex" gap={1}>
           <HighlightedIcon>
