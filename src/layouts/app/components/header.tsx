@@ -1,10 +1,11 @@
-import { Toolbar, Typography, Box } from '@mui/material';
+import { Toolbar, Box } from '@mui/material';
 import { FC } from 'react';
 import SpriteSvg from '@components/sprite-svg';
 import HighlightedIcon from './highlighted-icon';
 import { StyledAppBar } from './styled-app-bar';
 import { useLocation } from 'react-router';
 import { pathTitles } from '../data/path-titles';
+import TitleTypography from '@components/title-typography';
 
 interface HeaderProps {
   open: boolean;
@@ -19,8 +20,14 @@ const Header: FC<HeaderProps> = ({ open, drawerWidth, onClick }) => {
 
   return (
     <StyledAppBar position="fixed" open={open} drawerWidth={drawerWidth}>
-      <Toolbar sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <Box display="flex" alignItems="center" gap={2}>
+      <Toolbar
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          minHeight: { xs: 120, sm: 85, md: 95 },
+        }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
           {!open && (
             <HighlightedIcon onClick={onClick}>
               <SpriteSvg
@@ -32,9 +39,9 @@ const Header: FC<HeaderProps> = ({ open, drawerWidth, onClick }) => {
               />
             </HighlightedIcon>
           )}
-          <Typography variant="h5">{title}</Typography>
+          <TitleTypography variant="h4">{title}</TitleTypography>
         </Box>
-        <Box display="flex" gap={1}>
+        <Box sx={{ display: 'flex', gap: 2.5 }}>
           <HighlightedIcon>
             <SpriteSvg
               spritePath="/navbar-sprite"

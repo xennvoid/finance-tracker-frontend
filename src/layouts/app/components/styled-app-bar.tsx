@@ -17,7 +17,6 @@ export const StyledAppBar = styled(AppBar, {
   boxShadow: 'none',
   border: `1px solid ${colors.indigo['50']}`,
   borderLeft: 'none',
-  ...theme.mixins.toolbar,
 
   ...(open && {
     width: `calc(100% - ${drawerWidth}px)`,
