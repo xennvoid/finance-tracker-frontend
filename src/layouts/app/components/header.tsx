@@ -27,7 +27,7 @@ const Header: FC<HeaderProps> = ({ open, drawerWidth, onClick }) => {
           justifyContent: 'space-between',
           minHeight: { xs: 120, sm: 85, md: 95 },
         }}>
-        <Box display="flex" alignItems="center" gap={2}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
           {!open && (
             <HighlightedIcon onClick={onClick}>
               <SpriteSvg
@@ -41,7 +41,7 @@ const Header: FC<HeaderProps> = ({ open, drawerWidth, onClick }) => {
           )}
           <TitleTypography variant="h4">{title}</TitleTypography>
         </Box>
-        <Box display="flex" gap={1}>
+        <Box sx={{ display: 'flex', gap: 2.5 }}>
           <HighlightedIcon>
             <SpriteSvg
               spritePath="/navbar-sprite"
