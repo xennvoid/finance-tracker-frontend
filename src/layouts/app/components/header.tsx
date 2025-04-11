@@ -19,7 +19,13 @@ const Header: FC<HeaderProps> = ({ open, drawerWidth, onClick }) => {
 
   return (
     <StyledAppBar position="fixed" open={open} drawerWidth={drawerWidth}>
-      <Toolbar sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <Toolbar
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          minHeight: { xs: 120, sm: 85, md: 95 },
+        }}>
         <Box display="flex" alignItems="center" gap={2}>
           {!open && (
             <HighlightedIcon onClick={onClick}>
