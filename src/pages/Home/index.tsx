@@ -1,7 +1,7 @@
-import Section from '@components/section';
+import CommonTitleHeader from '@components/common-title-header';
 import PaymentCards from '@features/payment-card/components/payment-cards';
 import { useGetCardsQuery } from '@features/payment-card/hooks/use-get-cards-query';
-import { Box } from '@mui/material';
+import { Grid } from '@mui/material';
 import { ROUTES } from '@routes/routes';
 import { FC } from 'react';
 
@@ -14,24 +14,13 @@ const Home: FC<HomeProps> = ({}) => {
   const cards = data?.data || [];
 
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-      <Section
-        titleText="My cards"
-        linkText="See All"
-        linkTo={ROUTES.CARDS}
-        sectionSx={{ flex: 1 }}
-        contentContainerSx={{
-          display: 'grid',
-          gridTemplateColumns: {
-            xs: 'repeat(auto-fit, minmax(170px, 1fr))',
-            lg: 'repeat(auto-fit, minmax(350px, 1fr))',
-          },
-          gap: 3.75,
-          gridAutoRows: '1fr',
-        }}>
+    <Grid container spacing={3}>
+      <Grid size={{ xs: 12, md: 6, lg: 9 }}>
+        <CommonTitleHeader titleText="My Cards" linkText="See All" linkTo={ROUTES.CARDS} />
         <PaymentCards isLoading={isLoading} cards={cards} cardsAmount={CARDS_AMOUNT} />
-      </Section>
-    </Box>
+      </Grid>
+      <Grid size={{ xs: 12, md: 6, lg: 3 }}></Grid>
+    </Grid>
   );
 };
 
