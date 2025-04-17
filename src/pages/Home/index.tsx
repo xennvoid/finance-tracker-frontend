@@ -6,6 +6,7 @@ import RecentTransactions from '@features/transactions/components/recent-transac
 import { useGetTransactions } from '@features/transactions/hooks/use-get-transactions';
 import { ROUTES } from '@routes/routes';
 import { FC } from 'react';
+import Section from '@components/section';
 
 interface HomeProps {}
 
@@ -23,18 +24,18 @@ const Home: FC<HomeProps> = ({}) => {
 
   return (
     <Grid container spacing={3}>
-      <Grid size={{ xs: 12, md: 6, lg: 9 }}>
+      <Section size={{ xs: 12, md: 6, lg: 9 }}>
         <CommonTitleHeader titleText="My Cards" linkText="See All" linkTo={ROUTES.CARDS} />
         <PaymentCards isLoading={isLoading} cards={cards} cardsAmount={CARDS_AMOUNT} />
-      </Grid>
-      <Grid size={{ xs: 12, md: 6, lg: 3 }}>
+      </Section>
+      <Section size={{ xs: 12, md: 6, lg: 3 }}>
         <CommonTitleHeader titleText="My Cards" linkText="See All" linkTo={ROUTES.CARDS} />
         <RecentTransactions
           transactions={transactions}
           isLoading={isLoadingTransactions}
           transactionsAmount={TRANSACTIONS_AMOUNT}
         />
-      </Grid>
+      </Section>
     </Grid>
   );
 };
