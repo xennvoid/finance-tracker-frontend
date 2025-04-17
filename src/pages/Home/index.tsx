@@ -24,11 +24,11 @@ const Home: FC<HomeProps> = ({}) => {
 
   return (
     <Grid container spacing={3}>
-      <Section size={{ xs: 12, md: 6, lg: 9 }}>
+      <Section size={{ xs: 12, md: 6, lg: 8 }}>
         <CommonTitleHeader titleText="My Cards" linkText="See All" linkTo={ROUTES.CARDS} />
         <PaymentCards isLoading={isLoading} cards={cards} cardsAmount={CARDS_AMOUNT} />
       </Section>
-      <Section size={{ xs: 12, md: 6, lg: 3 }}>
+      <Section size={{ xs: 12, md: 6, lg: 4 }}>
         <CommonTitleHeader titleText="My Cards" linkText="See All" linkTo={ROUTES.CARDS} />
         <RecentTransactions
           transactions={transactions}
