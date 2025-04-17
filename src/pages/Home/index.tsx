@@ -10,7 +10,7 @@ import { FC } from 'react';
 interface HomeProps {}
 
 const CARDS_AMOUNT = 2;
-const TRANSACTIONS_AMOUNT = 2;
+const TRANSACTIONS_AMOUNT = 3;
 
 const Home: FC<HomeProps> = ({}) => {
   const { data, isLoading } = useGetCardsQuery(CARDS_AMOUNT);
