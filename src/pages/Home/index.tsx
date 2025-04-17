@@ -16,7 +16,7 @@ const Home: FC<HomeProps> = ({}) => {
   const { data, isLoading } = useGetCardsQuery(CARDS_AMOUNT);
   const cards = data?.data || [];
 
-  const { data: transactions = [] } = useGetTransactions({
+  const { data: transactions = [], isLoading: isLoadingTransactions } = useGetTransactions({
     limit: TRANSACTIONS_AMOUNT,
     sort: { createdAt: 'asc' },
   });
@@ -28,7 +28,12 @@ const Home: FC<HomeProps> = ({}) => {
         <PaymentCards isLoading={isLoading} cards={cards} cardsAmount={CARDS_AMOUNT} />
       </Grid>
       <Grid size={{ xs: 12, md: 6, lg: 3 }}>
-        <RecentTransactions transactions={transactions} />
+        <CommonTitleHeader titleText="My Cards" linkText="See All" linkTo={ROUTES.CARDS} />
+        <RecentTransactions
+          transactions={transactions}
+          isLoading={isLoadingTransactions}
+          transactionsAmount={TRANSACTIONS_AMOUNT}
+        />
       </Grid>
     </Grid>
   );
