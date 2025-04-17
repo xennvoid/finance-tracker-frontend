@@ -3,7 +3,7 @@ import PaymentCardSkeleton from './payment-card/payment-card-skeleton';
 import PaymentCard from './payment-card';
 import AddPaymentCard from './payment-card/add-payment-card';
 import { ICard } from '../types/card.types';
-import { Box } from '@mui/material';
+import SectionContent from '@components/section-content';
 
 interface PaymentCardsProps {
   isLoading: boolean;
@@ -28,7 +28,7 @@ const PaymentCards: FC<PaymentCardsProps> = ({ isLoading, cards, cardsAmount }) 
   }
 
   return (
-    <Box
+    <SectionContent
       sx={{
         display: 'grid',
         gridTemplateColumns: {
@@ -39,7 +39,7 @@ const PaymentCards: FC<PaymentCardsProps> = ({ isLoading, cards, cardsAmount }) 
         gridAutoRows: '1fr',
       }}>
       {content}
-    </Box>
+    </SectionContent>
   );
 };
 
