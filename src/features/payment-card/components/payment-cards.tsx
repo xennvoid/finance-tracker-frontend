@@ -32,7 +32,7 @@ const PaymentCards: FC<PaymentCardsProps> = ({ isLoading, cards, cardsAmount }) 
       sx={{
         display: 'grid',
         gridTemplateColumns: {
-          xs: 'repeat(auto-fit, minmax(170px, 1fr))',
+          xs: 'repeat(auto-fit, minmax(230px, 1fr))',
           lg: 'repeat(auto-fit, minmax(350px, 1fr))',
         },
         gap: 3.75,
