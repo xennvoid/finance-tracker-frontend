@@ -4,6 +4,7 @@ import { ITransaction } from '../types/transaction.types';
 import RecentTransaction from './recent-transaction';
 import RecentTransactionSkeleton from './recent-transaction-skeleton';
 import RecentTransactionsPlaceholder from './recent-transactions-placeholder';
+import SectionContent from '@components/section-content';
 
 interface RecentTransactionsProps {
   isLoading: boolean;
@@ -31,7 +32,8 @@ const RecentTransactions: FC<RecentTransactionsProps> = ({
   }
 
   return (
-    <CustomCard
+    <SectionContent
+      component={CustomCard}
       sx={{
         display: 'flex',
         flexDirection: 'column',
@@ -40,7 +42,7 @@ const RecentTransactions: FC<RecentTransactionsProps> = ({
         p: 3,
       }}>
       {content}
-    </CustomCard>
+    </SectionContent>
   );
 };
 

@@ -22,42 +22,53 @@ const PaymentCard: FC<PaymentCardProps> = ({
   return (
     <CustomCard
       sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        gap: 4.5,
         background: mainBackgroundColor,
         color: mainTextColor,
       }}>
-      <Box sx={{ p: 3 }}>
-        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 4 }}>
-          <PaymentCardBalanceInfo
-            balance={balance}
-            currency={currency}
-            secondaryTextColor={secondaryTextColor}
-          />
-          <SpriteSvg
-            spritePath="/payment-card-sprite"
-            fill={mainTextColor}
-            id="card-chip"
-            width={35}
-            height={35}
-          />
-        </Box>
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <PaymentCardHolderInfo
-            holderFirstName={holderFirstName}
-            holderLastName={holderLastName}
-            secondaryTextColor={secondaryTextColor}
-          />
-          <PaymentCardValidInfo
-            availableUntil={availableUntil}
-            secondaryTextColor={secondaryTextColor}
-          />
-        </Box>
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          px: 3,
+          pt: 3,
+        }}>
+        <PaymentCardBalanceInfo
+          balance={balance}
+          currency={currency}
+          secondaryTextColor={secondaryTextColor}
+        />
+        <SpriteSvg
+          spritePath="/payment-card-sprite"
+          fill={mainTextColor}
+          id="card-chip"
+          width={35}
+          height={35}
+        />
       </Box>
-      <Divider />
-      <PaymentCardFooter
-        number={number}
-        mainTextColor={mainTextColor}
-        secondaryBackgroundColor={secondaryBackgroundColor}
-      />
+      <Box sx={{ display: 'flex', alignItems: 'center', px: 3, gap: 8 }}>
+        <PaymentCardHolderInfo
+          holderFirstName={holderFirstName}
+          holderLastName={holderLastName}
+          secondaryTextColor={secondaryTextColor}
+        />
+        <PaymentCardValidInfo
+          availableUntil={availableUntil}
+          secondaryTextColor={secondaryTextColor}
+        />
+      </Box>
+      <Box sx={{ marginTop: 'auto' }}>
+        <Divider />
+        <PaymentCardFooter
+          number={number}
+          mainTextColor={mainTextColor}
+          secondaryBackgroundColor={secondaryBackgroundColor}
+        />
+      </Box>
     </CustomCard>
   );
 };
