@@ -29,7 +29,7 @@ const Home: FC<HomeProps> = ({}) => {
         <PaymentCards isLoading={isLoading} cards={cards} cardsAmount={CARDS_AMOUNT} />
       </Section>
       <Section size={{ xs: 12, md: 6, lg: 4 }}>
-        <CommonTitleHeader titleText="My Cards" linkText="See All" linkTo={ROUTES.CARDS} />
+        <CommonTitleHeader titleText="Recent Transactions" />
         <RecentTransactions
           transactions={transactions}
           isLoading={isLoadingTransactions}
