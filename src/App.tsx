@@ -10,6 +10,7 @@ import { useCurrentUserContext } from '@contexts/current-user-context';
 import PrivateRoute from '@routes/private-route';
 import AppLayout from '@layouts/app/app-layout';
 import Logout from '@pages/Logout';
+import TransactionsPage from '@pages/Transactions';
 
 function App() {
   const { currentUser } = useCurrentUserContext();
@@ -26,6 +27,7 @@ function App() {
             </PrivateRoute>
           }>
           <Route index element={<Home />} />
+          <Route path={ROUTES.TRANSACTIONS} element={<TransactionsPage />} />
         </Route>
         <Route element={<AuthLayout />}>
           <Route path={ROUTES.LOGIN} element={<LoginPage />}></Route>
