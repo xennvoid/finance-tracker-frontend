@@ -6,6 +6,7 @@ declare module '@mui/material/styles' {
       titlePrimary: string;
       titleSecondary: string;
       textPrimary: string;
+      primaryBlue: string;
     };
   }
 
@@ -14,6 +15,7 @@ declare module '@mui/material/styles' {
       titlePrimary: string;
       titleSecondary: string;
       textPrimary: string;
+      primaryBlue: string;
     };
   }
 }
