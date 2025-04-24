@@ -3,7 +3,7 @@ import { FC } from 'react';
 
 interface TransactionsTablePaginationsProps extends PaginationProps {}
 
-const TransactionsTablePaginations: FC<TransactionsTablePaginationsProps> = (props) => {
+const TransactionsTablePagination: FC<TransactionsTablePaginationsProps> = (props) => {
   return (
     <Pagination
       sx={{ py: 1 }}
@@ -35,4 +35,4 @@ const TransactionsTablePaginations: FC<TransactionsTablePaginationsProps> = (pro
   );
 };
 
-export default TransactionsTablePaginations;
+export default TransactionsTablePagination;
