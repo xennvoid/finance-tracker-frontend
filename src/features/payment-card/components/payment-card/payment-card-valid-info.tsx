@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Box, Typography } from '@mui/material';
 import { ICard } from '@features/payment-card/types/card.types';
-import { formatMonthYearShort } from '@utils/format-month-year';
+import { formatMonthYearShort } from '@utils/formatters/format-month-year';
 
 interface PaymentCardValidInfoProps extends Pick<ICard, 'availableUntil' | 'secondaryTextColor'> {}
 

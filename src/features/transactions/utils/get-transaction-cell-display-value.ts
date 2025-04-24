@@ -1,6 +1,6 @@
-import { formatCurrency } from '@utils/format-currency';
+import { formatCurrency } from '@utils/formatters/format-currency';
 import { ITransaction } from '../types/transaction.types';
-import { formatDayMonthTime } from '@utils/format-day-month-time';
+import { formatDayMonthTime } from '@utils/formatters/format-day-month-time';
 import { TransactionCellKey } from '../enums/transaction-cell.enum';
 
 export const getTransactionCellDisplayValue = (
