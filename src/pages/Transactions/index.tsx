@@ -1,24 +1,18 @@
 import { FC } from 'react';
 import CommonTitleHeader from '@components/common-title-header';
 import Section from '@components/section';
-import PaymentCards from '@features/payment-card/components/payment-cards';
 import TransactionsTable from '@features/transactions/components/transactions-table';
 import { Grid } from '@mui/material';
-import { ROUTES } from '@routes/routes';
 import TransactionsTableTabs from '@features/transactions/components/transactions-table/transactions-table-tabs';
 import { useTransactionsTableData } from '@features/transactions/hooks/use-transactions-table-data';
 import { useTransactionsTableFilter } from '@features/transactions/hooks/use-transactions-table-filter';
 import TransactionsTablePaginations from '@features/transactions/components/transactions-table/transactions-table-pagination';
 import { usePagination } from '@hooks/use-pagination';
-import { useCardsData } from '@features/payment-card/hooks/use-cards-data';
+import CardsSection from './sections/cards-section';
 
 interface TransactionsPageProps {}
 
-const CARDS_AMOUNT = 2;
-
 const TransactionsPage: FC<TransactionsPageProps> = ({}) => {
-  const { data: cards, isLoading: isLoadingCards } = useCardsData(CARDS_AMOUNT);
-
   const { transactionsTypeFilter, handleTransactionsTypeFilterChange } =
     useTransactionsTableFilter();
 
@@ -29,8 +23,7 @@ const TransactionsPage: FC<TransactionsPageProps> = ({}) => {
   return (
     <Grid container spacing={3}>
       <Section size={{ xs: 12, md: 6, lg: 8 }}>
-        <CommonTitleHeader titleText="My Cards" linkText="+ Add Card" linkTo={ROUTES.CARDS} />
-        <PaymentCards isLoading={isLoadingCards} cards={cards} cardsAmount={CARDS_AMOUNT} />
+        <CardsSection />
       </Section>
       <Section size={{ xs: 12, md: 6, lg: 4 }}>
         <CommonTitleHeader titleText="My expenses" />
