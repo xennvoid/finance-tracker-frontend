@@ -9,6 +9,8 @@ import { ROUTES } from '@routes/routes';
 import TransactionsTableTabs from '@features/transactions/components/transactions-table/transactions-table-tabs';
 import { useTransactionsTableData } from '@features/transactions/hooks/use-transactions-table-data';
 import { useTransactionsTableFilter } from '@features/transactions/hooks/use-transactions-table-filter';
+import TransactionsTablePaginations from '@features/transactions/components/transactions-table/transactions-table-pagination';
+import { usePagination } from '@hooks/use-pagination';
 
 interface TransactionsPageProps {}
 
@@ -21,7 +23,9 @@ const TransactionsPage: FC<TransactionsPageProps> = ({}) => {
   const { transactionsTypeFilter, handleTransactionsTypeFilterChange } =
     useTransactionsTableFilter();
 
-  const { transactions } = useTransactionsTableData(transactionsTypeFilter);
+  const { page, setPage, handlePageChange } = usePagination();
+
+  const { transactions, pagination } = useTransactionsTableData(transactionsTypeFilter, page);
 
   return (
     <Grid container spacing={3}>
@@ -36,9 +40,19 @@ const TransactionsPage: FC<TransactionsPageProps> = ({}) => {
         <CommonTitleHeader titleText="Transactions" />
         <TransactionsTableTabs
           filterValue={transactionsTypeFilter}
-          handleFilterChange={handleTransactionsTypeFilterChange}
+          handleFilterChange={(e, v) => {
+            handleTransactionsTypeFilterChange(e, v);
+            setPage(1);
+          }}
         />
         <TransactionsTable transactions={transactions} />
+        {pagination && (
+          <TransactionsTablePaginations
+            page={pagination.page}
+            count={pagination.totalPages}
+            onChange={handlePageChange}
+          />
+        )}
       </Section>
     </Grid>
   );
