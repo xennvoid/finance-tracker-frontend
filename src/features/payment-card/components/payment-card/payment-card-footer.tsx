@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Box, Typography } from '@mui/material';
 import SpriteSvg from '@components/sprite-svg';
 import { ICard } from '@features/payment-card/types/card.types';
-import { hideCardNumber } from '@features/payment-card/utils/hide-card-number';
+import { hideCardNumber } from '@utils/hide-card-number';
 import { useToggle } from '@hooks/use-toggle';
 
 interface PaymentCardFooterProps

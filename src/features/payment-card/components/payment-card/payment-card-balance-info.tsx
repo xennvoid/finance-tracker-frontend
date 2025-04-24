@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Box, Typography } from '@mui/material';
 import { ICard } from '@features/payment-card/types/card.types';
-import { formatCurrency } from '@utils/format-currency';
+import { formatCurrency } from '@utils/formatters/format-currency';
 
 interface PaymentCardBalanceInfoProps
   extends Pick<ICard, 'balance' | 'currency' | 'secondaryTextColor'> {}

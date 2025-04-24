@@ -1,6 +1,6 @@
 import CustomCard from '@components/custom-card';
 import { FC } from 'react';
-import { ITransaction } from '../types/transaction.types';
+import { ITransaction } from '../../types/transaction.types';
 import RecentTransaction from './recent-transaction';
 import RecentTransactionSkeleton from './recent-transaction-skeleton';
 import RecentTransactionsPlaceholder from './recent-transactions-placeholder';
