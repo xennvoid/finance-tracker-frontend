@@ -3,10 +3,10 @@ import PaymentCards from '@features/payment-card/components/payment-cards';
 import { useGetCardsQuery } from '@features/payment-card/hooks/use-get-cards-query';
 import { Grid } from '@mui/material';
 import RecentTransactions from '@features/transactions/components/recent-transactions';
-import { useGetTransactions } from '@features/transactions/hooks/use-get-transactions';
 import { ROUTES } from '@routes/routes';
 import { FC } from 'react';
 import Section from '@components/section';
+import { useRecentTransactionsData } from '@features/transactions/hooks/use-recent-transactions-data';
 
 interface HomeProps {}
 
@@ -17,10 +17,8 @@ const Home: FC<HomeProps> = ({}) => {
   const { data, isLoading } = useGetCardsQuery(CARDS_AMOUNT);
   const cards = data?.data || [];
 
-  const { data: transactions = [], isLoading: isLoadingTransactions } = useGetTransactions({
-    limit: TRANSACTIONS_AMOUNT,
-    sort: { createdAt: 'asc' },
-  });
+  const { data: transactions, isLoading: isLoadingTransactions } =
+    useRecentTransactionsData(TRANSACTIONS_AMOUNT);
 
   return (
     <Grid container spacing={3}>
