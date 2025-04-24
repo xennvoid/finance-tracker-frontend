@@ -11,5 +11,5 @@ export const getTransactions = async (queryParams?: IRequestQueryParams) => {
     },
   );
 
-  return response.data;
+  return response;
 };
