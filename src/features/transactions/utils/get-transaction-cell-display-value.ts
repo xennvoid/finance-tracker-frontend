@@ -2,6 +2,7 @@ import { formatCurrency } from '@utils/formatters/format-currency';
 import { ITransaction } from '../types/transaction.types';
 import { formatDayMonthTime } from '@utils/formatters/format-day-month-time';
 import { TransactionCellKey } from '../enums/transaction-cell.enum';
+import { hideCardNumber } from '@utils/hide-card-number';
 
 export const getTransactionCellDisplayValue = (
   key: TransactionCellKey,
@@ -23,7 +24,7 @@ export const getTransactionCellDisplayValue = (
       return tx.type;
 
     case TransactionCellKey.NUMBER:
-      return tx.card.number;
+      return hideCardNumber(tx.card.number);
 
     case TransactionCellKey.CURRENCY:
       return tx.card.currency;
