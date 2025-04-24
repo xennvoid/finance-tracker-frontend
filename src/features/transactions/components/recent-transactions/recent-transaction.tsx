@@ -1,7 +1,7 @@
 import SpriteSvg from '@components/sprite-svg';
 import { Avatar, Box, colors, Typography } from '@mui/material';
 import { FC } from 'react';
-import { ITransaction } from '../types/transaction.types';
+import { ITransaction } from '../../types/transaction.types';
 import { formatDayMonthYear } from '@utils/formatters/format-day-month-year';
 import { formatCurrency } from '@utils/formatters/format-currency';
 
