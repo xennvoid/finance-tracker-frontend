@@ -3,7 +3,7 @@ import { useGetTransactions } from './use-get-transactions';
 export const useRecentTransactionsData = (limit: number) => {
   const { data, isLoading } = useGetTransactions({
     limit,
-    sort: { createdAt: 'asc' },
+    sort: { createdAt: 'desc' },
   });
 
   if (!data) return { data: [], isLoading };
