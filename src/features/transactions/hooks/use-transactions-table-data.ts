@@ -10,6 +10,9 @@ export const useTransactionsTableData = (
       ? { type: transactionsTypeFilter }
       : {}),
     page,
+    sort: {
+      createdAt: 'desc',
+    },
   });
 
   if (!data) {
