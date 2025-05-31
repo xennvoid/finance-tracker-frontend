@@ -1,4 +1,4 @@
-import { Toolbar, Box } from '@mui/material';
+import { Toolbar, Box, Chip } from '@mui/material';
 import { FC } from 'react';
 import SpriteSvg from '@components/sprite-svg';
 import HighlightedIcon from './highlighted-icon';
@@ -6,6 +6,8 @@ import { StyledAppBar } from './styled-app-bar';
 import { useLocation } from 'react-router';
 import { pathTitles } from '../data/path-titles';
 import TitleTypography from '@components/title-typography';
+import { useActiveCardContext } from '@contexts/active-card-context';
+import { formatCurrency } from '@utils/formatters/format-currency';
 
 interface HeaderProps {
   open: boolean;
@@ -15,6 +17,7 @@ interface HeaderProps {
 
 const Header: FC<HeaderProps> = ({ open, drawerWidth, onClick }) => {
   const { pathname } = useLocation();
+  const { activeCard } = useActiveCardContext();
 
   const title = pathTitles[pathname] || 'Overview';
 
@@ -41,7 +44,19 @@ const Header: FC<HeaderProps> = ({ open, drawerWidth, onClick }) => {
           )}
           <TitleTypography variant="h4">{title}</TitleTypography>
         </Box>
-        <Box sx={{ display: 'flex', gap: 2.5 }}>
+        <Box sx={{ display: 'flex', gap: 2.5, alignItems: 'center' }}>
+          {activeCard && (
+            <Chip
+              label={formatCurrency(activeCard.balance, activeCard.currency)}
+              variant="outlined"
+              color="primary"
+              sx={(theme) => ({
+                ...theme.typography.body1,
+                fontWeight: 600,
+                paddingY: 3,
+              })}
+            />
+          )}
           <HighlightedIcon>
             <SpriteSvg
               spritePath="/navbar-sprite"
