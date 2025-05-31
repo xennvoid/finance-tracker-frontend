@@ -11,6 +11,7 @@ import PrivateRoute from '@routes/private-route';
 import AppLayout from '@layouts/app/app-layout';
 import Logout from '@pages/Logout';
 import TransactionsPage from '@pages/Transactions';
+import { ActiveCardProvider } from '@contexts/active-card-context';
 
 function App() {
   const { currentUser } = useCurrentUserContext();
@@ -23,7 +24,9 @@ function App() {
         <Route
           element={
             <PrivateRoute isAllowed={!!currentUser}>
-              <AppLayout />
+              <ActiveCardProvider>
+                <AppLayout />
+              </ActiveCardProvider>
             </PrivateRoute>
           }>
           <Route index element={<Home />} />
