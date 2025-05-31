@@ -5,11 +5,17 @@ import MonthlyExpensesChart from '@features/charts/components/monthly-expenses-c
 import CommonTitleHeader from '@components/common-title-header';
 import { useMonthlyExpensesChartData } from '@features/charts/hooks/use-monthly-expenses-chart-data';
 import { useChartActiveIndex } from '@features/charts/hooks/use-chart-active-index';
+import { useActiveCardContext } from '@contexts/active-card-context';
 
 interface ExpensesSectionProps {}
 
 const MonthlyExpensesChartSection: FC<ExpensesSectionProps> = ({}) => {
-  const { expensesChartData } = useMonthlyExpensesChartData();
+  const { activeCard } = useActiveCardContext();
+
+  const { expensesChartData } = useMonthlyExpensesChartData({
+    previousMonthsAmount: 5,
+    cardId: activeCard?._id || '',
+  });
 
   const { activeIndex, handleActiveIndexChange } = useChartActiveIndex(
     expensesChartData.length - 1,
