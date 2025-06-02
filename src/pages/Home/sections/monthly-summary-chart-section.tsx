@@ -5,6 +5,7 @@ import SectionContent from '@components/section-content';
 import MonthlySummaryChart from '@features/charts/components/monthly-summary-chart';
 import { useMonthlySummaryChartData } from '@features/charts/hooks/use-monthly-summary-chart-data';
 import { useActiveCardContext } from '@contexts/active-card-context';
+import EmptyMonthlySummaryChart from '@features/charts/components/monthly-summary-chart/empty-monthly-summary-chart';
 
 interface MonthlySummaryChartSectionProps {}
 
@@ -23,8 +24,12 @@ const MonthlySummaryChartSection: FC<MonthlySummaryChartSectionProps> = ({}) => 
         sx={{
           padding: 2,
         }}>
-        {activeCard && (
-          <MonthlySummaryChart chartData={summaryChartData} currency={activeCard.currency} />
+        {summaryChartData.length === 0 ? (
+          <EmptyMonthlySummaryChart />
+        ) : (
+          activeCard && (
+            <MonthlySummaryChart chartData={summaryChartData} currency={activeCard.currency} />
+          )
         )}
       </SectionContent>
     </>
