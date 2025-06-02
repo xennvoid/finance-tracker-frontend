@@ -14,7 +14,10 @@ export const useMonthlySummaryChartData = ({
     enabled: !!cardId,
     queryFn: () => getMonthlySummary({ previousMonthsAmount, cardId }),
     select: (data): IMonthlySummaryChartData => {
+      if (!data.length) return [];
+
       const { income, expense } = data[0];
+
       return [
         { name: 'Incomes', value: income },
         { name: 'Expenses', value: expense },
