@@ -1,20 +1,25 @@
-import { Box } from '@mui/material';
+import { Box, BoxProps } from '@mui/material';
 import { FC } from 'react';
 
-interface EmptyStateImageProps {}
+interface EmptyStateImageProps extends BoxProps<'img'> {}
 
-const EmptyStateImage: FC<EmptyStateImageProps> = ({}) => {
+const EmptyStateImage: FC<EmptyStateImageProps> = (props) => {
+  const { sx, ...others } = props;
+
   return (
     <Box
       component="img"
       sx={{
-        width: '100%',
+        maxHeight: 350,
+        maxWidth: '100%',
         objectFit: 'cover',
         aspectRatio: 1,
         margin: '0 auto',
+        ...sx,
       }}
       alt="No available data"
       src="/images/no-data.png"
+      {...others}
     />
   );
 };
