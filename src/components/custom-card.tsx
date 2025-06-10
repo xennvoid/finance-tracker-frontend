@@ -10,6 +10,7 @@ const CustomCard = <C extends ElementType = typeof Card>(props: CustomCardProps<
     <Card
       sx={{
         borderRadius: 6,
+        boxShadow: 'none',
         ...sx,
       }}
       {...others}>
