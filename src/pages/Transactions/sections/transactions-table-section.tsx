@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import CommonTitleHeader from '@components/common-title-header';
 import TransactionsTable from '@features/transactions/components/transactions-table';
-import TransactionsTablePagination from '@features/transactions/components/transactions-table/transactions-table-pagination';
+import CustomPagination from '@components/custom-pagination';
 import TransactionsTableTabs from '@features/transactions/components/transactions-table/transactions-table-tabs';
 import { useTransactionsTableData } from '@features/transactions/hooks/use-transactions-table-data';
 import { useTransactionsTableFilter } from '@features/transactions/hooks/use-transactions-table-filter';
@@ -29,7 +29,7 @@ const TransactionsTableSection: FC<TransactionsTableSectionProps> = ({}) => {
       />
       <TransactionsTable transactions={transactions} />
       {pagination && (
-        <TransactionsTablePagination
+        <CustomPagination
           page={pagination.page}
           count={pagination.totalPages}
           onChange={handlePageChange}
