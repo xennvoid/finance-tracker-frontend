@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { getCards } from '../services/get-cards.service';
+import { IRequestQueryParams } from 'types/request-query-params';
 
-export const useGetCardsQuery = (limit?: number, page?: number) =>
-  useQuery({ queryKey: ['cards', limit, page], queryFn: () => getCards(limit, page) });
+export const useGetCardsQuery = (queryParams?: IRequestQueryParams) =>
+  useQuery({ queryKey: ['cards', queryParams], queryFn: () => getCards(queryParams) });

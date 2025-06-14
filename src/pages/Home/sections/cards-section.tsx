@@ -9,7 +9,7 @@ interface CardsSectionProps {}
 const CARDS_AMOUNT = 2;
 
 const CardsSection: FC<CardsSectionProps> = ({}) => {
-  const { data: cards, isLoading: isLoadingCards } = useCardsData(CARDS_AMOUNT);
+  const { data: cards, isLoading: isLoadingCards } = useCardsData({ limit: CARDS_AMOUNT });
 
   return (
     <>
