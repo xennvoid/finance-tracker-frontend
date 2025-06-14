@@ -6,7 +6,7 @@ import { IActiveCardContextType, IActiveCardProviderProps } from 'types/active-c
 const ActiveCardContext = createContext<IActiveCardContextType>(null);
 
 export const ActiveCardProvider = ({ children }: IActiveCardProviderProps) => {
-  const { data } = useCardsData(1);
+  const { data } = useCardsData({ limit: 1 });
   const [activeCard, setActiveCard] = useState<ICard | null>(null);
 
   useEffect(() => {
