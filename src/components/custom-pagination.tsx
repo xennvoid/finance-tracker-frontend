@@ -1,9 +1,9 @@
-import { Pagination, PaginationItem, PaginationProps } from '@mui/material';
 import { FC } from 'react';
+import { Pagination, PaginationItem, PaginationProps } from '@mui/material';
 
-interface TransactionsTablePaginationsProps extends PaginationProps {}
+interface CustomPaginationsProps extends PaginationProps {}
 
-const TransactionsTablePagination: FC<TransactionsTablePaginationsProps> = (props) => {
+const CustomPagination: FC<CustomPaginationsProps> = (props) => {
   return (
     <Pagination
       sx={{ py: 1 }}
@@ -35,4 +35,4 @@ const TransactionsTablePagination: FC<TransactionsTablePaginationsProps> = (prop
   );
 };
 
-export default TransactionsTablePagination;
+export default CustomPagination;
