@@ -5,6 +5,8 @@ import { formatCurrency } from '@utils/formatters/format-currency';
 import { formatMonthYearShort } from '@utils/formatters/format-month-year';
 import CustomButton from '@components/custom-button';
 import PaymentCardPreviewOpenedRow from './payment-card-preview-opened-row';
+import { useToggle } from '@hooks/use-toggle';
+import PaymentCardPreviewDeleteModal from './payment-card-preview-delete-modal';
 import CustomTextButton from '@components/custom-text-button';
 
 interface PaymentCardPreviewOpenedProps {
@@ -16,6 +18,8 @@ const PaymentCardPreviewOpened: FC<PaymentCardPreviewOpenedProps> = ({
   card,
   handleSelectCard,
 }) => {
+  const { opened, toggleOpened } = useToggle();
+
   return (
     <>
       <Box component="dl" sx={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: 1.75 }}>
@@ -43,8 +47,15 @@ const PaymentCardPreviewOpened: FC<PaymentCardPreviewOpenedProps> = ({
         <CustomButton sx={{ width: '100%' }} onClick={(e) => handleSelectCard(e, card)}>
           Select
         </CustomButton>
-        <CustomTextButton sx={{ width: '100%' }}>Delete card</CustomTextButton>
+        <CustomTextButton sx={{ width: '100%' }} onClick={toggleOpened}>
+          Delete card
+        </CustomTextButton>
       </Box>
+      <PaymentCardPreviewDeleteModal
+        cardId={card._id}
+        opened={opened}
+        toggleOpened={toggleOpened}
+      />
     </>
   );
 };
