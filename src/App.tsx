@@ -12,6 +12,7 @@ import AppLayout from '@layouts/app/app-layout';
 import Logout from '@pages/Logout';
 import TransactionsPage from '@pages/Transactions';
 import { ActiveCardProvider } from '@contexts/active-card-context';
+import CardsPage from '@pages/Cards';
 
 function App() {
   const { currentUser } = useCurrentUserContext();
@@ -31,6 +32,7 @@ function App() {
           }>
           <Route index element={<Home />} />
           <Route path={ROUTES.TRANSACTIONS} element={<TransactionsPage />} />
+          <Route path={ROUTES.CARDS} element={<CardsPage />} />
         </Route>
         <Route element={<AuthLayout />}>
           <Route path={ROUTES.LOGIN} element={<LoginPage />}></Route>
