@@ -8,6 +8,7 @@ import { formatCurrency } from '@utils/formatters/format-currency';
 import PaymentCardPreviewColumn from './payment-card-preview-column';
 import PaymentCardPreviewOpened from './payment-card-preview-opened';
 import CustomTextButton from '@components/custom-text-button';
+import { useResponsive } from '@hooks/use-responsive';
 
 interface PaymentCardPreviewProps {
   card: ICard;
@@ -25,6 +26,7 @@ const PaymentCardPreview: FC<PaymentCardPreviewProps> = ({
   setOpenedCardId,
 }) => {
   const theme = useTheme();
+  const { isUnderLg, isTablet } = useResponsive();
 
   const toggleDetails = (e: MouseEvent<HTMLButtonElement>, card: ICard) => {
     e.stopPropagation();
@@ -52,7 +54,12 @@ const PaymentCardPreview: FC<PaymentCardPreviewProps> = ({
             ? { display: 'flex', justifyContent: 'space-between', alignItems: 'center' }
             : {
                 display: 'grid',
-                gridTemplateColumns: 'auto auto repeat(4, 1fr)',
+                gridTemplateColumns:
+                  isUnderLg && !isTablet
+                    ? 'max-content auto auto'
+                    : isTablet
+                    ? 'auto auto repeat(3, 1fr)'
+                    : 'auto auto repeat(4, 1fr)',
                 alignItems: 'center',
                 justifyItems: 'center',
                 columnGap: 2,
@@ -69,16 +76,20 @@ const PaymentCardPreview: FC<PaymentCardPreviewProps> = ({
         </Avatar>
         {!isOpened && (
           <>
-            <PaymentCardPreviewColumn title="Currency" value={card.currency} />
+            {!isUnderLg && <PaymentCardPreviewColumn title="Currency" value={card.currency} />}
             <PaymentCardPreviewColumn title="Card Number" value={hideCardNumber(card.number)} />
-            <PaymentCardPreviewColumn
-              title="Name"
-              value={`${card.holderFirstName} ${card.holderLastName}`}
-            />
-            <PaymentCardPreviewColumn
-              title="Balance"
-              value={formatCurrency(card.balance, card.currency)}
-            />
+            {(!isUnderLg || isTablet) && (
+              <>
+                <PaymentCardPreviewColumn
+                  title="Name"
+                  value={`${card.holderFirstName} ${card.holderLastName}`}
+                />
+                <PaymentCardPreviewColumn
+                  title="Balance"
+                  value={formatCurrency(card.balance, card.currency)}
+                />
+              </>
+            )}
           </>
         )}
         <CustomTextButton onClick={(e) => toggleDetails(e, card)}>
