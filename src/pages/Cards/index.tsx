@@ -4,6 +4,7 @@ import CardListSection from './sections/card-list-section';
 import Section from '@components/section';
 import AddCardSection from './sections/add-card-section';
 import ActiveCardSection from './sections/active-card-section';
+import RecentTransactionsSection from '@pages/Home/sections/recent-transactions-section';
 
 interface CardsPageProps {}
 
@@ -15,6 +16,9 @@ const CardsPage: FC<CardsPageProps> = ({}) => {
         sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
         <Box>
           <ActiveCardSection />
+        </Box>
+        <Box sx={{ mt: 'auto' }}>
+          <RecentTransactionsSection />
         </Box>
       </Section>
       <Section size={{ xs: 12, md: 6, lg: 8 }}>
