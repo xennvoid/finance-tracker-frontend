@@ -17,7 +17,8 @@ const CardListSection: FC<CardListSectionProps> = ({}) => {
   return (
     <>
       <CommonTitleHeader titleText="Card List" />
-      <SectionContent>
+      <SectionContent
+        sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
         <CardListPaginationProvider setPage={setPage}>
           <PaymentCardsPreviewList data={data} />
         </CardListPaginationProvider>
