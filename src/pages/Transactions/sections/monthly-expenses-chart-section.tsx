@@ -6,6 +6,7 @@ import CommonTitleHeader from '@components/common-title-header';
 import { useMonthlyExpensesChartData } from '@features/charts/hooks/use-monthly-expenses-chart-data';
 import { useChartActiveIndex } from '@features/charts/hooks/use-chart-active-index';
 import { useActiveCardContext } from '@contexts/active-card-context';
+import EmptyMonthlyExpensesChart from '@features/charts/components/monthly-expenses-chart/empty-monthly-expenses-chart';
 
 interface ExpensesSectionProps {}
 
@@ -21,6 +22,8 @@ const MonthlyExpensesChartSection: FC<ExpensesSectionProps> = ({}) => {
     expensesChartData.length - 1,
   );
 
+  const noChartData = expensesChartData.length === 0;
+
   return (
     <>
       <CommonTitleHeader titleText="My expenses" />
@@ -29,15 +32,20 @@ const MonthlyExpensesChartSection: FC<ExpensesSectionProps> = ({}) => {
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'center',
+          justifyContent: noChartData ? 'unset' : 'center',
           padding: 2,
           overflowY: 'hidden',
+          ...(noChartData ? { flexGrow: 0 } : {}),
         }}>
-        <MonthlyExpensesChart
-          chartData={expensesChartData}
-          activeIndex={activeIndex}
-          handleActiveIndexChange={handleActiveIndexChange}
-        />
+        {noChartData ? (
+          <EmptyMonthlyExpensesChart />
+        ) : (
+          <MonthlyExpensesChart
+            chartData={expensesChartData}
+            activeIndex={activeIndex}
+            handleActiveIndexChange={handleActiveIndexChange}
+          />
+        )}
       </SectionContent>
     </>
   );
