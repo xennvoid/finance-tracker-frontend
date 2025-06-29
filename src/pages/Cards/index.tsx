@@ -17,7 +17,7 @@ const CardsPage: FC<CardsPageProps> = ({}) => {
         <Box>
           <ActiveCardSection />
         </Box>
-        <Box sx={{ mt: 'auto' }}>
+        <Box>
           <RecentTransactionsSection />
         </Box>
       </Section>
