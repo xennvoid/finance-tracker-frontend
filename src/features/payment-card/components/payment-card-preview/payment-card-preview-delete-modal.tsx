@@ -5,6 +5,7 @@ import CustomButton from '@components/custom-button';
 import { useDeleteCardMutation } from '@features/payment-card/hooks/use-delete-card-mutation';
 import { useCardListPaginationContext } from '@features/payment-card/context/card-list-pagination-context';
 import CustomModal from '@components/custom-modal';
+import { useActiveCardContext } from '@contexts/active-card-context';
 
 interface PaymentCardPreviewDeleteModalProps {
   cardId: ICard['_id'];
@@ -17,8 +18,9 @@ const PaymentCardPreviewDeleteModal: FC<PaymentCardPreviewDeleteModalProps> = ({
   opened,
   toggleOpened,
 }) => {
+  const { setActiveCard } = useActiveCardContext();
   const { setPage } = useCardListPaginationContext();
-  const { mutate, isPending } = useDeleteCardMutation(setPage);
+  const { mutate, isPending } = useDeleteCardMutation(setPage, setActiveCard);
 
   return (
     <CustomModal open={opened} onClose={toggleOpened}>
