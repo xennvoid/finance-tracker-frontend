@@ -24,6 +24,7 @@ const CardsSection: FC<CardsSectionProps> = ({}) => {
           },
           gap: 3.75,
           gridAutoRows: '1fr',
+          flexGrow: 0,
         }}>
         <PaymentCards isLoading={isLoadingCards} cards={cards} cardsAmount={CARDS_AMOUNT} />
       </SectionContent>
