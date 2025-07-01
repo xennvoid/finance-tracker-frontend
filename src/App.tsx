@@ -13,6 +13,7 @@ import Logout from '@pages/Logout';
 import TransactionsPage from '@pages/Transactions';
 import { ActiveCardProvider } from '@contexts/active-card-context';
 import CardsPage from '@pages/Cards';
+import { SidebarContextProvider } from '@contexts/sidebar-context';
 
 function App() {
   const { currentUser } = useCurrentUserContext();
@@ -26,7 +27,9 @@ function App() {
           element={
             <PrivateRoute isAllowed={!!currentUser}>
               <ActiveCardProvider>
-                <AppLayout />
+                <SidebarContextProvider>
+                  <AppLayout />
+                </SidebarContextProvider>
               </ActiveCardProvider>
             </PrivateRoute>
           }>
