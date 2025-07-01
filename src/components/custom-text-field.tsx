@@ -1,15 +1,15 @@
 import { FC } from 'react';
-import { Box, InputLabel, TextField, TextFieldProps } from '@mui/material';
+import { Box, InputLabel, SxProps, TextField, TextFieldProps } from '@mui/material';
 import { mergeSx } from '@utils/merge-sx';
 
-export type CustomTextFieldProps = TextFieldProps & {};
+export type CustomTextFieldProps = TextFieldProps & { containerSx?: SxProps };
 
-const CustomTextField: FC<CustomTextFieldProps> = ({ sx, label, id, ...other }) => {
+const CustomTextField: FC<CustomTextFieldProps> = ({ sx, label, id, containerSx, ...other }) => {
   const inputId = id ?? other.name;
   const labelId = `${inputId}-label`;
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, ...containerSx }}>
       {label && (
         <InputLabel
           id={labelId}
