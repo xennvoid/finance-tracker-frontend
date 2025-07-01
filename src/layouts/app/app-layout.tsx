@@ -4,23 +4,22 @@ import { Outlet } from 'react-router';
 import Header from './components/header';
 import StyledDrawer from './components/styled-drawer';
 import Main from './components/main';
-import { useToggle } from '@hooks/use-toggle';
 import { useFixScrollShift } from '@hooks/use-fix-scroll-shift';
+import { useSidebarContext } from '@contexts/sidebar-context';
 
 interface AppLayoutProps {}
 
 const DRAWER_WIDTH = 250;
 
 const AppLayout: FC<AppLayoutProps> = ({}) => {
-  const { opened, toggleOpened } = useToggle();
-
+  const { isOpened, toggleSideBar } = useSidebarContext();
   useFixScrollShift();
 
   return (
     <Box display="flex">
-      <Header open={opened} onClick={toggleOpened} drawerWidth={DRAWER_WIDTH} />
-      <StyledDrawer open={opened} onClick={toggleOpened} drawerWidth={DRAWER_WIDTH} />
-      <Main open={opened} drawerWidth={DRAWER_WIDTH}>
+      <Header open={isOpened} onClick={toggleSideBar} drawerWidth={DRAWER_WIDTH} />
+      <StyledDrawer open={isOpened} onClick={toggleSideBar} drawerWidth={DRAWER_WIDTH} />
+      <Main open={isOpened} drawerWidth={DRAWER_WIDTH}>
         <Outlet />
       </Main>
     </Box>
