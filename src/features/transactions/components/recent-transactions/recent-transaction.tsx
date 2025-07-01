@@ -7,7 +7,13 @@ import { formatCurrency } from '@utils/formatters/format-currency';
 
 interface RecentTransactionProps extends ITransaction {}
 
-const RecentTransaction: FC<RecentTransactionProps> = ({ text, type, amount, createdAt, card }) => {
+const RecentTransaction: FC<RecentTransactionProps> = ({
+  description,
+  type,
+  amount,
+  createdAt,
+  card,
+}) => {
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 2 }}>
       <Avatar sx={{ backgroundColor: '#e7edff', width: 55, height: 55 }}>
@@ -19,7 +25,7 @@ const RecentTransaction: FC<RecentTransactionProps> = ({ text, type, amount, cre
       </Avatar>
       <Box sx={{ flex: 1 }}>
         <Typography sx={(theme) => ({ fontWeight: 500, color: theme.palette.custom.textPrimary })}>
-          {text}
+          {description}
         </Typography>
         <Typography
           variant="body2"
