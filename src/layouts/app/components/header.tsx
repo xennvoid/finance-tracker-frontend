@@ -8,6 +8,8 @@ import { pathTitles } from '../data/path-titles';
 import TitleTypography from '@components/title-typography';
 import { useActiveCardContext } from '@contexts/active-card-context';
 import { formatCurrency } from '@utils/formatters/format-currency';
+import CreateTransactionModal from '@features/transactions/components/create-transaction-modal';
+import { useCreateTransactionModal } from '@features/transactions/hooks/use-create-transaction-modal';
 
 interface HeaderProps {
   open: boolean;
@@ -18,6 +20,8 @@ interface HeaderProps {
 const Header: FC<HeaderProps> = ({ open, drawerWidth, onClick }) => {
   const { pathname } = useLocation();
   const { activeCard } = useActiveCardContext();
+
+  const { modalOpened, toggleModal, toggleOpened } = useCreateTransactionModal(activeCard);
 
   const title = pathTitles[pathname] || 'Overview';
 
@@ -57,6 +61,9 @@ const Header: FC<HeaderProps> = ({ open, drawerWidth, onClick }) => {
               })}
             />
           )}
+          <HighlightedIcon onClick={toggleModal}>
+            <SpriteSvg spritePath="/transaction-sprite" id="transaction" fill="#2d60ff" />
+          </HighlightedIcon>
           <HighlightedIcon>
             <SpriteSvg
               spritePath="/navbar-sprite"
@@ -77,6 +84,7 @@ const Header: FC<HeaderProps> = ({ open, drawerWidth, onClick }) => {
           </HighlightedIcon>
         </Box>
       </Toolbar>
+      <CreateTransactionModal opened={modalOpened} toggleOpened={toggleOpened} />
     </StyledAppBar>
   );
 };
