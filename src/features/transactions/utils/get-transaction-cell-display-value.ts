@@ -11,8 +11,8 @@ export const getTransactionCellDisplayValue = (
   switch (key) {
     case TransactionCellKey.AMOUNT:
       return tx.type === 'income'
-        ? `+${formatCurrency(tx.amount)}`
-        : `-${formatCurrency(tx.amount)}`;
+        ? `+${formatCurrency(tx.amount, tx.card.currency)}`
+        : `-${formatCurrency(tx.amount, tx.card.currency)}`;
 
     case TransactionCellKey.DATE:
       return formatDayMonthTime(tx.createdAt);
