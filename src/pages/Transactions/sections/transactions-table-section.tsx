@@ -15,7 +15,10 @@ const TransactionsTableSection: FC<TransactionsTableSectionProps> = ({}) => {
 
   const { page, setPage, handlePageChange } = usePagination();
 
-  const { transactions, pagination } = useTransactionsTableData(transactionsTypeFilter, page);
+  const { transactions, pagination, isLoadingTransactions } = useTransactionsTableData(
+    transactionsTypeFilter,
+    page,
+  );
 
   return (
     <>
@@ -27,7 +30,7 @@ const TransactionsTableSection: FC<TransactionsTableSectionProps> = ({}) => {
           setPage(1);
         }}
       />
-      <TransactionsTable transactions={transactions} />
+      <TransactionsTable transactions={transactions} isLoading={isLoadingTransactions} />
       {pagination && (
         <CustomPagination
           page={pagination.page}
