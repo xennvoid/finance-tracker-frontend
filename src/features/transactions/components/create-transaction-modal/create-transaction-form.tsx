@@ -6,13 +6,18 @@ import { Controller } from 'react-hook-form';
 import CustomButton from '@components/custom-button';
 import CreateTransactionModalDetails from './create-transaction-modal-details';
 import { ICard } from '@features/payment-card/types/card.types';
+import SpriteSvg from '@components/sprite-svg';
+import { useAIReceiptScan } from '@features/transactions/hooks/use-ai-receipt-scan';
 
 interface CreateTransactionFormProps {
   card: ICard;
 }
 
 const CreateTransactionForm: FC<CreateTransactionFormProps> = ({ card }) => {
-  const { control, handleSubmit, onSubmit, watch } = useCreateTransactionForm();
+  const { control, handleSubmit, onSubmit, watch, setValue } = useCreateTransactionForm();
+
+  const { fileRef, handleScanClick, scanReceiptWithAI, isScanningReceipt } =
+    useAIReceiptScan(setValue);
 
   return (
     <Box
@@ -115,7 +120,21 @@ const CreateTransactionForm: FC<CreateTransactionFormProps> = ({ card }) => {
             />
           )}
         />
+        <input
+          ref={fileRef}
+          type="file"
+          style={{ display: 'none' }}
+          accept="image/*"
+          onChange={scanReceiptWithAI}
+        />
       </Box>
+      <CustomButton
+        disabled={isScanningReceipt}
+        sx={{ display: 'flex', alignItems: 'center', gap: 1, backgroundColor: '#000' }}
+        onClick={handleScanClick}>
+        Scan receipt with AI
+        <SpriteSvg id="magicpen" spritePath="/transaction-sprite" fill="#fff" />
+      </CustomButton>
       {card && (
         <CreateTransactionModalDetails
           card={card}

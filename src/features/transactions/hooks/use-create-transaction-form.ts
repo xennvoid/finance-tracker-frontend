@@ -3,7 +3,7 @@ import { ICreateTransactionFormFields } from '../types/create-transaction.types'
 import { useCreateTransactionMutation } from './use-create-transaction-mutation';
 
 export const useCreateTransactionForm = () => {
-  const { control, handleSubmit, watch } = useForm<ICreateTransactionFormFields>({
+  const { control, handleSubmit, watch, setValue } = useForm<ICreateTransactionFormFields>({
     defaultValues: {
       amount: 0,
       description: '',
@@ -20,5 +20,5 @@ export const useCreateTransactionForm = () => {
     } catch {}
   };
 
-  return { control, handleSubmit, onSubmit, watch };
+  return { control, handleSubmit, onSubmit, watch, setValue };
 };
