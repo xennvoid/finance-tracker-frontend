@@ -10,7 +10,7 @@ interface WeeklyActivityChartProps {
 
 const WeeklyActivityChart: FC<WeeklyActivityChartProps> = ({ data }) => {
   return (
-    <ResponsiveContainer width="100%" height="100%" debounce={350}>
+    <ResponsiveContainer width="100%" height="100%" minHeight={300} debounce={350}>
       <BarChart
         width={500}
         height={300}
