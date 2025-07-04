@@ -10,6 +10,7 @@ import { useActiveCardContext } from '@contexts/active-card-context';
 import { formatCurrency } from '@utils/formatters/format-currency';
 import CreateTransactionModal from '@features/transactions/components/create-transaction-modal';
 import { useCreateTransactionModal } from '@features/transactions/hooks/use-create-transaction-modal';
+import { useResponsive } from '@hooks/use-responsive';
 
 interface HeaderProps {
   open: boolean;
@@ -24,6 +25,8 @@ const Header: FC<HeaderProps> = ({ open, drawerWidth, onClick }) => {
   const { modalOpened, toggleModal, toggleOpened } = useCreateTransactionModal(activeCard);
 
   const title = pathTitles[pathname] || 'Overview';
+
+  const { isUnderMd } = useResponsive();
 
   return (
     <StyledAppBar position="fixed" open={open} drawerWidth={drawerWidth}>
@@ -46,7 +49,7 @@ const Header: FC<HeaderProps> = ({ open, drawerWidth, onClick }) => {
               />
             </HighlightedIcon>
           )}
-          <TitleTypography variant="h4">{title}</TitleTypography>
+          {!isUnderMd && <TitleTypography variant="h4">{title}</TitleTypography>}
         </Box>
         <Box sx={{ display: 'flex', gap: 2.5, alignItems: 'center' }}>
           {activeCard && (
@@ -64,24 +67,28 @@ const Header: FC<HeaderProps> = ({ open, drawerWidth, onClick }) => {
           <HighlightedIcon onClick={toggleModal}>
             <SpriteSvg spritePath="/transaction-sprite" id="transaction" fill="#2d60ff" />
           </HighlightedIcon>
-          <HighlightedIcon>
-            <SpriteSvg
-              spritePath="/navbar-sprite"
-              id="settings-empty"
-              width={25}
-              height={25}
-              fill="#718EBF"
-            />
-          </HighlightedIcon>
-          <HighlightedIcon>
-            <SpriteSvg
-              spritePath="/navbar-sprite"
-              id="user"
-              width={25}
-              height={25}
-              fill="#718EBF"
-            />
-          </HighlightedIcon>
+          {!isUnderMd && (
+            <>
+              <HighlightedIcon>
+                <SpriteSvg
+                  spritePath="/navbar-sprite"
+                  id="settings-empty"
+                  width={25}
+                  height={25}
+                  fill="#718EBF"
+                />
+              </HighlightedIcon>
+              <HighlightedIcon>
+                <SpriteSvg
+                  spritePath="/navbar-sprite"
+                  id="user"
+                  width={25}
+                  height={25}
+                  fill="#718EBF"
+                />
+              </HighlightedIcon>
+            </>
+          )}
         </Box>
       </Toolbar>
       <CreateTransactionModal opened={modalOpened} toggleOpened={toggleOpened} />
