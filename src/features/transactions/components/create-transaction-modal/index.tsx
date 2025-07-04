@@ -15,7 +15,7 @@ const CreateTransactionModal: FC<CreateTransactionModalProps> = ({ opened, toggl
   if (!activeCard) return null;
 
   return (
-    <CustomModal open={opened} onClose={toggleOpened}>
+    <CustomModal open={opened} onClose={toggleOpened} sx={{ overflowY: 'auto' }}>
       <>
         <Typography variant="h4" sx={{ fontWeight: 600, textAlign: 'center' }}>
           Create Transaction
