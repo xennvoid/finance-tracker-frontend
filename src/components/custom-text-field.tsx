@@ -16,6 +16,7 @@ const CustomTextField: FC<CustomTextFieldProps> = ({ sx, label, id, containerSx,
           htmlFor={inputId}
           sx={(theme) => ({
             color: theme.palette.custom.textPrimary,
+            fontWeight: 600,
           })}>
           {label}
         </InputLabel>

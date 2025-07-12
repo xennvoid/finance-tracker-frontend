@@ -12,10 +12,14 @@ const CreateTransactionModalDetailsRow: FC<CreateTransactionModalDetailsRowProps
 }) => {
   return (
     <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
-      <Typography variant="body2" sx={(theme) => ({ color: theme.palette.custom.titleSecondary })}>
+      <Typography
+        variant="body2"
+        sx={(theme) => ({ fontWeight: 500, color: theme.palette.custom.titleSecondary })}>
         {label}
       </Typography>
-      <Typography variant="body2" sx={(theme) => ({ color: theme.palette.custom.textPrimary })}>
+      <Typography
+        variant="body2"
+        sx={(theme) => ({ fontWeight: 500, color: theme.palette.custom.textPrimary })}>
         {value}
       </Typography>
     </Box>
