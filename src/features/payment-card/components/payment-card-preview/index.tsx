@@ -51,7 +51,7 @@ const PaymentCardPreview: FC<PaymentCardPreviewProps> = ({
       <Box
         sx={
           isOpened
-            ? { display: 'flex', justifyContent: 'space-between', alignItems: 'center' }
+            ? { display: 'flex', justifyContent: 'space-between', alignItems: 'start' }
             : {
                 display: 'grid',
                 gridTemplateColumns:
@@ -60,7 +60,7 @@ const PaymentCardPreview: FC<PaymentCardPreviewProps> = ({
                     : isTablet
                     ? 'auto auto repeat(3, 1fr)'
                     : 'auto auto repeat(4, 1fr)',
-                alignItems: 'center',
+                alignItems: 'start',
                 justifyItems: 'center',
                 columnGap: 2,
               }
