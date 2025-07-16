@@ -3,7 +3,7 @@ import { FC } from 'react';
 import SpriteSvg from '@components/sprite-svg';
 import HighlightedIcon from './highlighted-icon';
 import { StyledAppBar } from './styled-app-bar';
-import { useLocation } from 'react-router';
+import { Link, useLocation } from 'react-router';
 import { pathTitles } from '../data/path-titles';
 import TitleTypography from '@components/title-typography';
 import { useActiveCardContext } from '@contexts/active-card-context';
@@ -11,6 +11,7 @@ import { formatCurrency } from '@utils/formatters/format-currency';
 import CreateTransactionModal from '@features/transactions/components/create-transaction-modal';
 import { useCreateTransactionModal } from '@features/transactions/hooks/use-create-transaction-modal';
 import { useResponsive } from '@hooks/use-responsive';
+import { ROUTES } from '@routes/routes';
 
 interface HeaderProps {
   open: boolean;
@@ -69,15 +70,17 @@ const Header: FC<HeaderProps> = ({ open, drawerWidth, onClick }) => {
           </HighlightedIcon>
           {!isUnderMd && (
             <>
-              <HighlightedIcon>
-                <SpriteSvg
-                  spritePath="/navbar-sprite"
-                  id="settings-empty"
-                  width={25}
-                  height={25}
-                  fill="#718EBF"
-                />
-              </HighlightedIcon>
+              <Link to={ROUTES.SETTINGS}>
+                <HighlightedIcon>
+                  <SpriteSvg
+                    spritePath="/navbar-sprite"
+                    id="settings-empty"
+                    width={25}
+                    height={25}
+                    fill="#718EBF"
+                  />
+                </HighlightedIcon>
+              </Link>
               <HighlightedIcon>
                 <SpriteSvg
                   spritePath="/navbar-sprite"
