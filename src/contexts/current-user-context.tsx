@@ -26,7 +26,8 @@ export const CurrentUserProvider = ({ children }: ICurrentUserProviderProps) => 
   };
 
   return (
-    <CurrentUserContext.Provider value={{ currentUser, loginCurrentUser, logOutCurrentUser }}>
+    <CurrentUserContext.Provider
+      value={{ currentUser, loginCurrentUser, logOutCurrentUser, setCurrentUser }}>
       {children}
     </CurrentUserContext.Provider>
   );
