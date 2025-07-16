@@ -13,8 +13,8 @@ export const useLoginMutationState = () => {
   const { error, isError, isPending, mutate } = useMutation({
     mutationFn: login,
     onSuccess: (userData) => {
-      const { email, firstName, lastName } = userData;
-      loginCurrentUser({ email, firstName, lastName });
+      const { accessToken, ...userInfo } = userData;
+      loginCurrentUser({ ...userInfo });
       navigate(ROUTES.HOME);
     },
   });
