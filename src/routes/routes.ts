@@ -5,4 +5,5 @@ export const ROUTES = {
   LOGOUT: '/logout',
   CARDS: '/cards',
   TRANSACTIONS: '/transactions',
+  SETTINGS: '/settings',
 };

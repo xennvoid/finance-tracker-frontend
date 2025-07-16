@@ -15,6 +15,7 @@ import { ActiveCardProvider } from '@contexts/active-card-context';
 import CardsPage from '@pages/Cards';
 import { SidebarContextProvider } from '@contexts/sidebar-context';
 import { useGetMeQuery } from '@features/auth/hooks/use-get-me-query';
+import SettingsPage from '@pages/Settings';
 
 function App() {
   const { currentUser } = useCurrentUserContext();
@@ -39,6 +40,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path={ROUTES.TRANSACTIONS} element={<TransactionsPage />} />
           <Route path={ROUTES.CARDS} element={<CardsPage />} />
+          <Route path={ROUTES.SETTINGS} element={<SettingsPage />} />
         </Route>
         <Route element={<AuthLayout />}>
           <Route path={ROUTES.LOGIN} element={<LoginPage />}></Route>
