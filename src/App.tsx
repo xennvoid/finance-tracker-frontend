@@ -14,9 +14,13 @@ import TransactionsPage from '@pages/Transactions';
 import { ActiveCardProvider } from '@contexts/active-card-context';
 import CardsPage from '@pages/Cards';
 import { SidebarContextProvider } from '@contexts/sidebar-context';
+import SettingsPage from '@pages/Settings';
+import { useGetMeQuery } from '@features/auth/hooks/use-get-me-query';
 
 function App() {
   const { currentUser } = useCurrentUserContext();
+
+  useGetMeQuery();
 
   return (
     <>
