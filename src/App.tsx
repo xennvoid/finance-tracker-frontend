@@ -2,7 +2,7 @@ import { CssBaseline } from '@mui/material';
 import Home from '@pages/Home';
 import LoginPage from '@pages/Login';
 import AuthLayout from '@layouts/auth-layout';
-import { Route, Routes } from 'react-router';
+import { Route, Routes, useLocation } from 'react-router';
 import { ROUTES } from '@routes/routes';
 import { ToastContainer } from 'react-toastify';
 import RegisterPage from '@pages/Register';
@@ -20,7 +20,10 @@ import SettingsPage from '@pages/Settings';
 function App() {
   const { currentUser } = useCurrentUserContext();
 
-  useGetMeQuery();
+  const location = useLocation();
+  const isPublicRoute = [ROUTES.LOGIN, ROUTES.REGISTER, ROUTES.LOGOUT].includes(location.pathname);
+
+  useGetMeQuery(!isPublicRoute);
 
   return (
     <>

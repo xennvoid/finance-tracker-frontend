@@ -4,13 +4,14 @@ import { useEffect } from 'react';
 import { useCurrentUserContext } from '@contexts/current-user-context';
 import { saveCurrentUser } from '../services/user-storage.service';
 
-export const useGetMeQuery = () => {
+export const useGetMeQuery = (enabled: boolean) => {
   const { setCurrentUser } = useCurrentUserContext();
 
   const query = useQuery({
     queryKey: ['me'],
     queryFn: () => getMe(),
     staleTime: 1000 * 60 * 5,
+    enabled,
   });
 
   useEffect(() => {
