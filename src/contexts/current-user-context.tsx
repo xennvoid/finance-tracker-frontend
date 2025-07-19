@@ -1,8 +1,10 @@
+import { logout } from '@features/auth/services/logout.service';
 import {
   getStoredUser,
   removeCurrentUser,
   saveCurrentUser,
 } from '@features/auth/services/user-storage.service';
+import { clearAccessToken } from '@services/token.service';
 import { createContext, useContext, useState } from 'react';
 import {
   ICurrentUserContextType,
@@ -20,9 +22,16 @@ export const CurrentUserProvider = ({ children }: ICurrentUserProviderProps) => 
     saveCurrentUser(userData);
   };
 
-  const logOutCurrentUser = () => {
+  const logOutCurrentUser = async () => {
+    try {
+      await logout();
+    } catch (e) {
+      console.error(e);
+    }
+
     setCurrentUser(null);
     removeCurrentUser();
+    clearAccessToken();
   };
 
   return (

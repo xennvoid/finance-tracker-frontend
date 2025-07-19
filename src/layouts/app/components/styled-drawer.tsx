@@ -1,4 +1,4 @@
-import { Drawer } from '@mui/material';
+import { Button, Drawer, Typography } from '@mui/material';
 import { FC } from 'react';
 import DrawerHeader from './drawer-header';
 import DrawerList from './drawer-list';
@@ -8,6 +8,7 @@ import { pathTitles } from '../data/path-titles';
 import { useLocation } from 'react-router';
 import { useResponsive } from '@hooks/use-responsive';
 import TitleTypography from '@components/title-typography';
+import { useCurrentUserContext } from '@contexts/current-user-context';
 
 interface StyledDrawerProps {
   open: boolean;
@@ -16,6 +17,7 @@ interface StyledDrawerProps {
 }
 
 const StyledDrawer: FC<StyledDrawerProps> = ({ open, onClick, drawerWidth }) => {
+  const { logOutCurrentUser } = useCurrentUserContext();
   const { pathname } = useLocation();
   const title = pathTitles[pathname] || 'Overview';
 
@@ -49,6 +51,23 @@ const StyledDrawer: FC<StyledDrawerProps> = ({ open, onClick, drawerWidth }) => 
         </TitleTypography>
       )}
       <DrawerList />
+      <Button
+        sx={{
+          mt: 'auto',
+          mb: 2,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: 2,
+          px: 2,
+        }}
+        onClick={logOutCurrentUser}>
+        <SpriteSvg spritePath="/navbar-sprite" id="logout" width={24} height={24} fill="none" />
+        <Typography
+          sx={(theme) => ({ color: theme.palette.custom.textPrimary, textTransform: 'none' })}>
+          Logout
+        </Typography>
+      </Button>
     </Drawer>
   );
 };
