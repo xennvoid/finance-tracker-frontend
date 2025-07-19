@@ -8,10 +8,16 @@ export const login = async ({ email, password }: ILoginFormData): Promise<ILogin
     throw new Error('Provide all fields.');
   }
 
-  const responseData = await axiosInstance.post<void, ILoginResponse>(AUTH_ENDPOINTS.LOGIN, {
-    email,
-    password,
-  });
+  const responseData = await axiosInstance.post<void, ILoginResponse>(
+    AUTH_ENDPOINTS.LOGIN,
+    {
+      email,
+      password,
+    },
+    {
+      skipAuthRefresh: true,
+    },
+  );
 
   const accessToken = responseData.data.accessToken;
 

@@ -1,5 +1,5 @@
 import { clearAccessToken, getAccessToken, setAccessToken } from '@services/token.service';
-import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
+import axios, { AxiosError } from 'axios';
 import { AUTH_ENDPOINTS } from '@constants/api-endpoints/auth';
 import { IApiResponseError } from 'types/api-response.types';
 
@@ -23,16 +23,21 @@ axiosInstance.interceptors.request.use(
   },
 );
 
-interface CustomAxiosRequestConfig extends InternalAxiosRequestConfig {
-  _retry?: boolean;
-}
-
 axiosInstance.interceptors.response.use(
   (response) => {
     return response.data;
   },
   async (error: AxiosError<IApiResponseError>) => {
-    const originalRequest = error.config as CustomAxiosRequestConfig;
+    const originalRequest = error.config;
+
+    if (!originalRequest) {
+      return Promise.reject(error);
+    }
+
+    if (originalRequest?.skipAuthRefresh) {
+      return Promise.reject(error.response?.data?.error || error.message);
+    }
+
     if (
       (error.response?.status === 401 || error.response?.status === 403) &&
       !originalRequest._retry
@@ -51,8 +56,10 @@ axiosInstance.interceptors.response.use(
           return axiosInstance(originalRequest);
         }
       } catch (error) {
-        clearAccessToken();
-        window.location.href = '/logout';
+        if (error instanceof AxiosError && error.response?.status === 401) {
+          clearAccessToken();
+          window.location.href = '/logout';
+        }
       }
     }
 

@@ -13,10 +13,16 @@ export const register = async (formData: FormData): Promise<void> => {
     throw new Error('All fields are required');
   }
 
-  await axiosInstance.post<void, IRegisterResponse>(AUTH_ENDPOINTS.REGISTER, {
-    email,
-    password,
-    firstName,
-    lastName,
-  });
+  await axiosInstance.post<void, IRegisterResponse>(
+    AUTH_ENDPOINTS.REGISTER,
+    {
+      email,
+      password,
+      firstName,
+      lastName,
+    },
+    {
+      skipAuthRefresh: true,
+    },
+  );
 };
