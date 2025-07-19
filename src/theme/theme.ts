@@ -2,6 +2,9 @@ import { createTheme, responsiveFontSizes } from '@mui/material';
 
 export const theme = responsiveFontSizes(
   createTheme({
+    typography: {
+      fontFamily: 'Geologica, sans-serif',
+    },
     palette: {
       custom: {
         titlePrimary: '#343c6a',
